@@ -1,0 +1,1899 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Dashboard</title>
+
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    >
+
+    <style>
+
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .navbar {
+            margin-bottom: 20px;
+        }
+
+        .stat-card {
+            min-height: 130px;
+        }
+
+        .attendance-cell {
+            min-width: 230px;
+        }
+
+        .status-badge {
+            font-size: 14px;
+            padding: 7px 10px;
+        }
+
+        .attendance-buttons {
+            margin-top: 12px;
+        }
+
+        .attendance-buttons button {
+            margin-right: 8px;
+        }
+
+        .table td,
+        .table th {
+            vertical-align: middle;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     NAVIGATION BAR
+===================================================== -->
+
+<nav class="navbar navbar-dark bg-dark">
+
+    <div class="container">
+
+        <span class="navbar-brand">
+            Cloud Event Management
+        </span>
+
+        <a
+            href="index.html"
+            class="btn btn-light"
+        >
+            Logout
+        </a>
+
+    </div>
+
+</nav>
+
+
+<!-- =====================================================
+     MAIN CONTENT
+===================================================== -->
+
+<div class="container mt-4">
+
+    <h2>
+        Admin Dashboard
+    </h2>
+
+    <p class="text-muted">
+        Welcome, Administrator!
+    </p>
+
+
+    <!-- =================================================
+         STATISTICS
+    ================================================== -->
+
+    <div class="row mt-4">
+
+
+        <!-- TOTAL EVENTS -->
+
+        <div class="col-md-4 mb-3">
+
+            <div class="card text-center shadow-sm stat-card">
+
+                <div class="card-body">
+
+                    <h5>
+                        Total Events
+                    </h5>
+
+                    <h2 id="total-events">
+                        0
+                    </h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- TOTAL REGISTRATIONS -->
+
+        <div class="col-md-4 mb-3">
+
+            <div class="card text-center shadow-sm stat-card">
+
+                <div class="card-body">
+
+                    <h5>
+                        Total Registrations
+                    </h5>
+
+                    <h2 id="total-registrations">
+                        0
+                    </h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- UPCOMING EVENTS -->
+
+        <div class="col-md-4 mb-3">
+
+            <div class="card text-center shadow-sm stat-card">
+
+                <div class="card-body">
+
+                    <h5>
+                        Upcoming Events
+                    </h5>
+
+                    <h2 id="upcoming-events">
+                        0
+                    </h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         CREATE NEW EVENT
+    ================================================== -->
+
+    <div class="card shadow-sm mt-4">
+
+        <div class="card-body">
+
+            <h4>
+                Create New Event
+            </h4>
+
+
+            <form
+                id="event-form"
+                class="mt-3"
+            >
+
+
+                <!-- EVENT NAME -->
+
+                <div class="mb-3">
+
+                    <label
+                        for="event-title"
+                        class="form-label"
+                    >
+                        Event Name
+                    </label>
+
+                    <input
+                        type="text"
+                        class="form-control"
+                        id="event-title"
+                        placeholder="Enter event name"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- DESCRIPTION -->
+
+                <div class="mb-3">
+
+                    <label
+                        for="event-description"
+                        class="form-label"
+                    >
+                        Description
+                    </label>
+
+                    <textarea
+                        id="event-description"
+                        class="form-control"
+                        rows="3"
+                        placeholder="Enter event description"
+                        required
+                    ></textarea>
+
+                </div>
+
+
+                <!-- DATE -->
+
+                <div class="mb-3">
+
+                    <label
+                        for="event-date"
+                        class="form-label"
+                    >
+                        Date
+                    </label>
+
+                    <input
+                        type="date"
+                        id="event-date"
+                        class="form-control"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- TIME -->
+
+                <div class="mb-3">
+
+                    <label
+                        for="event-time"
+                        class="form-label"
+                    >
+                        Time
+                    </label>
+
+                    <input
+                        type="time"
+                        id="event-time"
+                        class="form-control"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- VENUE -->
+
+                <div class="mb-3">
+
+                    <label
+                        for="event-venue"
+                        class="form-label"
+                    >
+                        Venue
+                    </label>
+
+                    <input
+                        type="text"
+                        id="event-venue"
+                        class="form-control"
+                        placeholder="Enter venue"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- CAPACITY -->
+
+                <div class="mb-3">
+
+                    <label
+                        for="event-capacity"
+                        class="form-label"
+                    >
+                        Capacity
+                    </label>
+
+                    <input
+                        type="number"
+                        id="event-capacity"
+                        class="form-control"
+                        placeholder="Enter maximum capacity"
+                        min="1"
+                        required
+                    >
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="btn btn-dark"
+                >
+                    Create Event
+                </button>
+
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         MANAGE EVENTS
+    ================================================== -->
+
+    <h4 class="mt-5">
+        Manage Events
+    </h4>
+
+
+    <div class="table-responsive mt-3">
+
+        <table
+            class="table table-bordered table-hover bg-white"
+        >
+
+            <thead class="table-dark">
+
+                <tr>
+
+                    <th>
+                        Event
+                    </th>
+
+                    <th>
+                        Date
+                    </th>
+
+                    <th>
+                        Time
+                    </th>
+
+                    <th>
+                        Venue
+                    </th>
+
+                    <th>
+                        Capacity
+                    </th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody id="events-table-body">
+
+                <tr>
+
+                    <td
+                        colspan="5"
+                        class="text-center"
+                    >
+                        Loading events...
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+
+    <!-- =================================================
+         EVENT REGISTRATIONS AND ATTENDANCE
+    ================================================== -->
+
+    <h4 class="mt-5">
+
+        Event Registrations & Attendance
+
+    </h4>
+
+
+    <div class="card mt-3 mb-5 shadow-sm">
+
+        <div class="card-body">
+
+
+            <p class="text-muted">
+
+                Select an event to view registered
+                students and mark their attendance.
+
+            </p>
+
+
+            <!-- EVENT DROPDOWN -->
+
+            <label
+                for="registration-event-select"
+                class="form-label"
+            >
+                Select Event
+            </label>
+
+            <select
+                id="registration-event-select"
+                class="form-select"
+            >
+
+                <option value="">
+                    Select Event
+                </option>
+
+            </select>
+
+
+            <!-- REGISTRATION COUNT -->
+
+            <div
+                id="registration-count"
+                class="mt-3"
+            ></div>
+
+
+            <!-- ATTENDANCE SUMMARY -->
+
+            <div
+                id="attendance-summary"
+                class="mt-3"
+            ></div>
+
+
+            <!-- REGISTRATION TABLE -->
+
+            <div
+                class="table-responsive mt-3"
+            >
+
+                <table
+                    class="table table-bordered table-hover bg-white"
+                >
+
+                    <thead class="table-dark">
+
+                        <tr>
+
+                            <th>
+                                Student ID
+                            </th>
+
+                            <th>
+                                Student Name
+                            </th>
+
+                            <th>
+                                Email
+                            </th>
+
+                            <th>
+                                Attendance
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody
+                        id="registrations-table-body"
+                    >
+
+                        <tr>
+
+                            <td
+                                colspan="4"
+                                class="text-center text-muted"
+                            >
+
+                                Select an event to view
+                                registrations.
+
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+</div>
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script>
+
+
+// =====================================================
+// BACKEND URL
+// =====================================================
+
+const BACKEND_URL =
+    "http://127.0.0.1:5000";
+
+
+// =====================================================
+// CREATE EVENT
+// =====================================================
+
+const eventForm =
+    document.getElementById("event-form");
+
+
+eventForm.addEventListener(
+    "submit",
+    async function(event) {
+
+        event.preventDefault();
+
+
+        const newEvent = {
+
+            title:
+                document.getElementById(
+                    "event-title"
+                ).value.trim(),
+
+            description:
+                document.getElementById(
+                    "event-description"
+                ).value.trim(),
+
+            date:
+                document.getElementById(
+                    "event-date"
+                ).value,
+
+            time:
+                document.getElementById(
+                    "event-time"
+                ).value,
+
+            venue:
+                document.getElementById(
+                    "event-venue"
+                ).value.trim(),
+
+            capacity:
+                Number(
+                    document.getElementById(
+                        "event-capacity"
+                    ).value
+                )
+
+        };
+
+
+        console.log(
+            "Sending event:",
+            newEvent
+        );
+
+
+        try {
+
+            const response =
+                await fetch(
+                    BACKEND_URL + "/events",
+                    {
+
+                        method: "POST",
+
+                        headers: {
+                            "Content-Type":
+                                "application/json"
+                        },
+
+                        body:
+                            JSON.stringify(
+                                newEvent
+                            )
+
+                    }
+                );
+
+
+            const result =
+                await response.json();
+
+
+            console.log(
+                "Create event response:",
+                result
+            );
+
+
+            if (response.ok) {
+
+                alert(
+                    "Event created successfully!"
+                );
+
+
+                eventForm.reset();
+
+
+                await loadAdminEvents();
+
+                await loadRegistrationEvents();
+
+                await loadTotalRegistrations();
+
+
+            } else {
+
+                alert(
+                    "Error: " +
+                    (
+                        result.message ||
+                        "Unable to create event"
+                    )
+                );
+
+            }
+
+
+        } catch (error) {
+
+            console.error(
+                "Create event error:",
+                error
+            );
+
+
+            alert(
+                "Could not connect to backend."
+            );
+
+        }
+
+    }
+);
+
+
+// =====================================================
+// LOAD ALL EVENTS
+// =====================================================
+
+async function loadAdminEvents() {
+
+    const tableBody =
+        document.getElementById(
+            "events-table-body"
+        );
+
+
+    try {
+
+        const response =
+            await fetch(
+                BACKEND_URL + "/events"
+            );
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                "Failed to load events"
+            );
+
+        }
+
+
+        const events =
+            await response.json();
+
+
+        console.log(
+            "Events received:",
+            events
+        );
+
+
+        tableBody.innerHTML = "";
+
+
+        // TOTAL EVENTS
+
+        document.getElementById(
+            "total-events"
+        ).textContent =
+            events.length;
+
+
+        // UPCOMING EVENTS
+
+        const today =
+            new Date();
+
+
+        today.setHours(
+            0,
+            0,
+            0,
+            0
+        );
+
+
+        const upcomingEvents =
+            events.filter(
+                function(event) {
+
+                    if (!event.date) {
+
+                        return false;
+
+                    }
+
+
+                    const eventDate =
+                        new Date(
+                            event.date
+                        );
+
+
+                    return eventDate >= today;
+
+                }
+            );
+
+
+        document.getElementById(
+            "upcoming-events"
+        ).textContent =
+            upcomingEvents.length;
+
+
+        // DISPLAY EVENTS
+
+        events.forEach(
+            function(event) {
+
+                const row =
+                    document.createElement(
+                        "tr"
+                    );
+
+
+                row.innerHTML = `
+
+                    <td>
+                        ${escapeHTML(
+                            event.title || "-"
+                        )}
+                    </td>
+
+                    <td>
+                        ${escapeHTML(
+                            event.date || "-"
+                        )}
+                    </td>
+
+                    <td>
+                        ${escapeHTML(
+                            event.time || "-"
+                        )}
+                    </td>
+
+                    <td>
+                        ${escapeHTML(
+                            event.venue || "-"
+                        )}
+                    </td>
+
+                    <td>
+                        ${event.capacity || "-"}
+                    </td>
+
+                `;
+
+
+                tableBody.appendChild(
+                    row
+                );
+
+            }
+        );
+
+
+        // NO EVENTS
+
+        if (events.length === 0) {
+
+            tableBody.innerHTML = `
+
+                <tr>
+
+                    <td
+                        colspan="5"
+                        class="text-center text-muted"
+                    >
+
+                        No events available.
+
+                    </td>
+
+                </tr>
+
+            `;
+
+        }
+
+
+    } catch (error) {
+
+        console.error(
+            "Error loading events:",
+            error
+        );
+
+
+        tableBody.innerHTML = `
+
+            <tr>
+
+                <td
+                    colspan="5"
+                    class="text-danger text-center"
+                >
+
+                    Unable to load events.
+
+                </td>
+
+            </tr>
+
+        `;
+
+    }
+
+}
+
+
+// =====================================================
+// LOAD EVENTS INTO DROPDOWN
+// =====================================================
+
+async function loadRegistrationEvents() {
+
+    const select =
+        document.getElementById(
+            "registration-event-select"
+        );
+
+
+    try {
+
+        const response =
+            await fetch(
+                BACKEND_URL + "/events"
+            );
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                "Failed to load events"
+            );
+
+        }
+
+
+        const events =
+            await response.json();
+
+
+        select.innerHTML = `
+
+            <option value="">
+                Select Event
+            </option>
+
+        `;
+
+
+        events.forEach(
+            function(event) {
+
+                const option =
+                    document.createElement(
+                        "option"
+                    );
+
+
+                option.value =
+                    event.eventId ||
+                    event.id;
+
+
+                option.textContent =
+                    event.title;
+
+
+                select.appendChild(
+                    option
+                );
+
+            }
+        );
+
+
+    } catch (error) {
+
+        console.error(
+            "Error loading registration events:",
+            error
+        );
+
+
+        select.innerHTML = `
+
+            <option value="">
+                Unable to load events
+            </option>
+
+        `;
+
+    }
+
+}
+
+
+// =====================================================
+// LOAD REGISTRATIONS
+// =====================================================
+
+async function loadRegistrations(eventId) {
+
+    const tableBody =
+        document.getElementById(
+            "registrations-table-body"
+        );
+
+
+    const countElement =
+        document.getElementById(
+            "registration-count"
+        );
+
+
+    const summaryElement =
+        document.getElementById(
+            "attendance-summary"
+        );
+
+
+    if (!eventId) {
+
+        tableBody.innerHTML = `
+
+            <tr>
+
+                <td
+                    colspan="4"
+                    class="text-center text-muted"
+                >
+
+                    Select an event to view
+                    registrations.
+
+                </td>
+
+            </tr>
+
+        `;
+
+
+        countElement.innerHTML = "";
+
+        summaryElement.innerHTML = "";
+
+        return;
+
+    }
+
+
+    try {
+
+        tableBody.innerHTML = `
+
+            <tr>
+
+                <td
+                    colspan="4"
+                    class="text-center"
+                >
+
+                    Loading registrations...
+
+                </td>
+
+            </tr>
+
+        `;
+
+
+        // =================================================
+        // GET REGISTRATIONS
+        // =================================================
+
+        const response =
+            await fetch(
+
+                BACKEND_URL +
+                "/registrations/" +
+                encodeURIComponent(
+                    eventId
+                )
+
+            );
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                "Failed to load registrations"
+            );
+
+        }
+
+
+        const registrations =
+            await response.json();
+
+
+        console.log(
+            "Registrations received:",
+            registrations
+        );
+
+
+        // =================================================
+        // COUNT ATTENDANCE DIRECTLY FROM REGISTRATIONS
+        // =================================================
+
+        let presentCount = 0;
+
+        let absentCount = 0;
+
+        let notMarkedCount = 0;
+
+
+        registrations.forEach(
+            function(registration) {
+
+                const status =
+                    registration.attendance ||
+                    "Not Marked";
+
+
+                if (
+                    status === "Present"
+                ) {
+
+                    presentCount++;
+
+                }
+
+                else if (
+                    status === "Absent"
+                ) {
+
+                    absentCount++;
+
+                }
+
+                else {
+
+                    notMarkedCount++;
+
+                }
+
+            }
+        );
+
+
+        // =================================================
+        // REGISTRATION COUNT
+        // =================================================
+
+        countElement.innerHTML = `
+
+            <div class="alert alert-info">
+
+                <strong>
+                    Total Registrations:
+                </strong>
+
+                ${registrations.length}
+
+            </div>
+
+        `;
+
+
+        // =================================================
+        // ATTENDANCE SUMMARY
+        // =================================================
+
+        summaryElement.innerHTML = `
+
+            <div class="row">
+
+                <div class="col-md-4">
+
+                    <div class="alert alert-success">
+
+                        <strong>
+                            Present:
+                        </strong>
+
+                        ${presentCount}
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-4">
+
+                    <div class="alert alert-danger">
+
+                        <strong>
+                            Absent:
+                        </strong>
+
+                        ${absentCount}
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-4">
+
+                    <div class="alert alert-secondary">
+
+                        <strong>
+                            Not Marked:
+                        </strong>
+
+                        ${notMarkedCount}
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        `;
+
+
+        // =================================================
+        // CLEAR TABLE
+        // =================================================
+
+        tableBody.innerHTML = "";
+
+
+        // =================================================
+        // NO REGISTRATIONS
+        // =================================================
+
+        if (
+            registrations.length === 0
+        ) {
+
+            tableBody.innerHTML = `
+
+                <tr>
+
+                    <td
+                        colspan="4"
+                        class="text-center text-muted"
+                    >
+
+                        No students registered
+                        for this event.
+
+                    </td>
+
+                </tr>
+
+            `;
+
+            return;
+
+        }
+
+
+        // =================================================
+        // DISPLAY REGISTRATIONS
+        // =================================================
+
+        registrations.forEach(
+            function(registration) {
+
+
+                // -----------------------------------------
+                // CURRENT ATTENDANCE
+                // -----------------------------------------
+
+                const currentStatus =
+                    registration.attendance ||
+                    "Not Marked";
+
+
+                // -----------------------------------------
+                // STATUS BADGE
+                // -----------------------------------------
+
+                let statusBadge;
+
+
+                if (
+                    currentStatus ===
+                    "Present"
+                ) {
+
+                    statusBadge = `
+
+                        <span
+                            class="badge bg-success status-badge"
+                        >
+                            Present
+                        </span>
+
+                    `;
+
+                }
+
+                else if (
+                    currentStatus ===
+                    "Absent"
+                ) {
+
+                    statusBadge = `
+
+                        <span
+                            class="badge bg-danger status-badge"
+                        >
+                            Absent
+                        </span>
+
+                    `;
+
+                }
+
+                else {
+
+                    statusBadge = `
+
+                        <span
+                            class="badge bg-secondary status-badge"
+                        >
+                            Not Marked
+                        </span>
+
+                    `;
+
+                }
+
+
+                // -----------------------------------------
+                // CREATE TABLE ROW
+                // -----------------------------------------
+
+                const row =
+                    document.createElement(
+                        "tr"
+                    );
+
+
+                row.innerHTML = `
+
+                    <td>
+
+                        ${escapeHTML(
+                            registration.studentId ||
+                            "-"
+                        )}
+
+                    </td>
+
+
+                    <td>
+
+                        ${escapeHTML(
+                            registration.studentName ||
+                            "-"
+                        )}
+
+                    </td>
+
+
+                    <td>
+
+                        ${escapeHTML(
+                            registration.studentEmail ||
+                            "-"
+                        )}
+
+                    </td>
+
+
+                    <td class="attendance-cell">
+
+                        <div>
+
+                            ${statusBadge}
+
+                        </div>
+
+
+                        <div class="attendance-buttons">
+
+                            <button
+                                type="button"
+                                class="btn btn-success btn-sm"
+                                onclick="markAttendance(
+                                    '${escapeJS(
+                                        registration.registrationId
+                                    )}',
+                                    '${escapeJS(
+                                        registration.studentName
+                                    )}',
+                                    'Present'
+                                )"
+                            >
+
+                                Present
+
+                            </button>
+
+
+                            <button
+                                type="button"
+                                class="btn btn-danger btn-sm"
+                                onclick="markAttendance(
+                                    '${escapeJS(
+                                        registration.registrationId
+                                    )}',
+                                    '${escapeJS(
+                                        registration.studentName
+                                    )}',
+                                    'Absent'
+                                )"
+                            >
+
+                                Absent
+
+                            </button>
+
+                        </div>
+
+                    </td>
+
+                `;
+
+
+                tableBody.appendChild(
+                    row
+                );
+
+            }
+        );
+
+
+    } catch (error) {
+
+        console.error(
+            "Error loading registrations:",
+            error
+        );
+
+
+        tableBody.innerHTML = `
+
+            <tr>
+
+                <td
+                    colspan="4"
+                    class="text-danger text-center"
+                >
+
+                    Unable to load registrations.
+
+                </td>
+
+            </tr>
+
+        `;
+
+
+        countElement.innerHTML = "";
+
+        summaryElement.innerHTML = "";
+
+    }
+
+}
+
+
+// =====================================================
+// MARK ATTENDANCE
+// =====================================================
+
+async function markAttendance(
+    registrationId,
+    studentName,
+    status
+) {
+
+
+    // =================================================
+    // VALIDATE REGISTRATION ID
+    // =================================================
+
+    if (!registrationId) {
+
+        alert(
+            "Registration ID is missing."
+        );
+
+        return;
+
+    }
+
+
+    // =================================================
+    // ATTENDANCE DATA
+    // =================================================
+
+    const attendanceData = {
+
+        registrationId:
+            registrationId,
+
+        status:
+            status
+
+    };
+
+
+    console.log(
+        "Sending attendance:",
+        attendanceData
+    );
+
+
+    try {
+
+        // =================================================
+        // SEND TO BACKEND
+        // =================================================
+
+        const response =
+            await fetch(
+
+                BACKEND_URL +
+                "/attendance",
+
+                {
+
+                    method: "POST",
+
+                    headers: {
+
+                        "Content-Type":
+                            "application/json"
+
+                    },
+
+                    body:
+                        JSON.stringify(
+                            attendanceData
+                        )
+
+                }
+
+            );
+
+
+        const result =
+            await response.json();
+
+
+        console.log(
+            "Attendance response:",
+            result
+        );
+
+
+        // =================================================
+        // SUCCESS
+        // =================================================
+
+        if (response.ok) {
+
+            alert(
+                studentName +
+                " marked " +
+                status
+            );
+
+
+            // =================================================
+            // GET EVENT ID FROM UPDATED REGISTRATION
+            // =================================================
+
+            const updatedRegistration =
+                result.registration;
+
+
+            if (
+                updatedRegistration &&
+                updatedRegistration.eventId
+            ) {
+
+                await loadRegistrations(
+                    updatedRegistration.eventId
+                );
+
+            }
+
+            else {
+
+                // Fallback:
+                // reload selected event
+
+                const selectedEvent =
+                    document.getElementById(
+                        "registration-event-select"
+                    ).value;
+
+
+                if (selectedEvent) {
+
+                    await loadRegistrations(
+                        selectedEvent
+                    );
+
+                }
+
+            }
+
+
+        }
+
+        // =================================================
+        // ERROR
+        // =================================================
+
+        else {
+
+            alert(
+
+                "Unable to save attendance: " +
+
+                (
+                    result.message ||
+                    "Unknown error"
+                )
+
+            );
+
+        }
+
+
+    } catch (error) {
+
+        console.error(
+            "Attendance error:",
+            error
+        );
+
+
+        alert(
+            "Could not connect to backend."
+        );
+
+    }
+
+}
+
+
+// =====================================================
+// LOAD TOTAL REGISTRATIONS
+// =====================================================
+
+async function loadTotalRegistrations() {
+
+    try {
+
+        const eventsResponse =
+            await fetch(
+                BACKEND_URL + "/events"
+            );
+
+
+        if (!eventsResponse.ok) {
+
+            throw new Error(
+                "Unable to load events"
+            );
+
+        }
+
+
+        const events =
+            await eventsResponse.json();
+
+
+        let totalRegistrations = 0;
+
+
+        // =================================================
+        // GET REGISTRATIONS FOR EVERY EVENT
+        // =================================================
+
+        for (
+            const event of events
+        ) {
+
+            const eventId =
+                event.eventId ||
+                event.id;
+
+
+            const response =
+                await fetch(
+
+                    BACKEND_URL +
+                    "/registrations/" +
+                    encodeURIComponent(
+                        eventId
+                    )
+
+                );
+
+
+            if (response.ok) {
+
+                const registrations =
+                    await response.json();
+
+
+                totalRegistrations +=
+                    registrations.length;
+
+            }
+
+        }
+
+
+        document.getElementById(
+            "total-registrations"
+        ).textContent =
+            totalRegistrations;
+
+
+    } catch (error) {
+
+        console.error(
+            "Error loading total registrations:",
+            error
+        );
+
+
+        document.getElementById(
+            "total-registrations"
+        ).textContent =
+            "0";
+
+    }
+
+}
+
+
+// =====================================================
+// EVENT DROPDOWN CHANGE
+// =====================================================
+
+const registrationEventSelect =
+    document.getElementById(
+        "registration-event-select"
+    );
+
+
+registrationEventSelect.addEventListener(
+    "change",
+    function() {
+
+        const eventId =
+            this.value;
+
+
+        console.log(
+            "Selected event:",
+            eventId
+        );
+
+
+        loadRegistrations(
+            eventId
+        );
+
+    }
+);
+
+
+// =====================================================
+// HTML ESCAPE
+// =====================================================
+
+function escapeHTML(value) {
+
+    if (
+        value === null ||
+        value === undefined
+    ) {
+
+        return "";
+
+    }
+
+
+    return String(value)
+
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+
+        .replace(
+            /</g,
+            "&lt;"
+        )
+
+        .replace(
+            />/g,
+            "&gt;"
+        )
+
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+
+        .replace(
+            /'/g,
+            "&#039;"
+        );
+
+}
+
+
+// =====================================================
+// JAVASCRIPT ESCAPE
+// =====================================================
+
+function escapeJS(value) {
+
+    if (
+        value === null ||
+        value === undefined
+    ) {
+
+        return "";
+
+    }
+
+
+    return String(value)
+
+        .replace(
+            /\\/g,
+            "\\\\"
+        )
+
+        .replace(
+            /'/g,
+            "\\'"
+        )
+
+        .replace(
+            /"/g,
+            '\\"'
+        )
+
+        .replace(
+            /\n/g,
+            "\\n"
+        )
+
+        .replace(
+            /\r/g,
+            "\\r"
+        );
+
+}
+
+
+// =====================================================
+// INITIALIZE DASHBOARD
+// =====================================================
+
+async function initializeDashboard() {
+
+    console.log(
+        "Initializing Admin Dashboard..."
+    );
+
+
+    await loadAdminEvents();
+
+
+    await loadRegistrationEvents();
+
+
+    await loadTotalRegistrations();
+
+
+    console.log(
+        "Admin Dashboard loaded successfully."
+    );
+
+}
+
+
+// =====================================================
+// START DASHBOARD
+// =====================================================
+
+initializeDashboard();
+
+
+</script>
+
+
+</body>
+
+</html>
